@@ -20,6 +20,7 @@ export const Layout = () => {
         </nav>
         <div className='contenido-principal'>
             <aside className={`sidebar ${isOpen ? 'open':''}`}>
+                <h2>opciones</h2>
                 <ul className='sidebar-nav'>
                     <li> <NavLink to='/'>Inicio</NavLink> </li>
                     <li> <NavLink to='/por_programa'>Por programa</NavLink> </li>
