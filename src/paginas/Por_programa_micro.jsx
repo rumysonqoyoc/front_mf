@@ -6,15 +6,16 @@ import axios from 'axios'
 import './Paginas.css'
 
 const url='http://192.168.1.2:3001/api/'
-export const Por_programa = () => {
+export const Por_programa_micro = () => {
   const [programas, setProgramas]=useState([])
   const [metas, setMetas]=useState([])
   const [cod_prg, setCod_prg]=useState([])
     const cols=[
       {title:'PRODUCTO', data:'nom_prd', width:'25%'},
       {title:'ACTIVIDAD', data:'nom_act', width:'25%'},
-      {title:'SUB PRODUCTO', data:'nom_sub', width:'25%'},
-      {title:'UNIDAD DE MEDIDAD', data:'unidad', width:'15%'},
+      {title:'SUB PRODUCTO', data:'nom_sub', width:'20%'},
+      {title:'MICRO RED', data:'nom_micro', width:'10%'},
+      {title:'UNIDAD DE MEDIDAD', data:'unidad', width:'10%'},
       {title:'META', data:'meta', width:'10%'}
     ]
   
@@ -31,11 +32,10 @@ export const Por_programa = () => {
       setCod_prg(event.target.value)
     }
 
-    const get_por_programa=async()=>{
+    const get_por_programa_micro=async()=>{
       try{
-        const res=await axios.get(url+'por_programa/'+cod_prg)
+        const res=await axios.get(url+'por_programa_micro/'+cod_prg)
         setMetas(res.data)
-        console.log('metas por prg:',res.data)
       }catch(error){
         console.error('error al obtener datos')
       }
@@ -46,7 +46,7 @@ export const Por_programa = () => {
   },[])
 
   useEffect(()=>{
-    get_por_programa()
+    get_por_programa_micro()
   },[cod_prg])
 
   return (

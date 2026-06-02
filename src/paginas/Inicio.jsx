@@ -7,7 +7,7 @@ import './Paginas.css'
 
 DataTable.use(DT);
 
-const url='http://localhost:3001/api/inicio'
+const url='http://192.168.1.2:3001/api/inicio'
 export const Inicio = () => {
   const [metas, setMetas]=useState([])
   const cols=[
@@ -39,7 +39,7 @@ export const Inicio = () => {
       options={{
           responsive: true,
           destroy:true,
-          pageLength: 5,
+          pageLength: 10,
           lengthMenu: [5,10, 15, 50, 75, 100],
           language: {
             search: "Buscar:",
