@@ -6,7 +6,6 @@
 
 .navbar {
   display: flex;
-  align-items: center;
   align-content: center;
   justify-content: space-between;
   background-color: #023573;
@@ -51,24 +50,23 @@
 }
 
 .sidebar-nav {
-  margin-top: 40px;
+  margin-top: 20px;
   list-style: none;
   padding: 1px;
 }
 
 .sidebar-nav li a {
   display: block;
-  padding: 10px 10px;
+  padding: 5px 10px;
   color: #cbeff5;
   text-decoration: none;
   border-bottom: 1px solid #6ef6eb;
   border-top: 1px solid #6ef6eb;
-  
 }
 
 .sidebar-nav li a:hover {
   display: block;
-  padding: 10px 10px;
+  padding: 5px 10px;
   color: #f7f2f2;
   background-color: #063794;
   text-decoration: none;
@@ -90,6 +88,13 @@
   border-radius: 50%;
   padding: 5px 5px;
   border: 3px solid #3ddce4;
+}
+
+.opt{
+  align-content: center;
+  text-align: center;
+  background-color: #380261;
+  padding: 5px 0;  
 }
 
 /* Ajuste si el sidebar empuja el contenido al desplegarse */

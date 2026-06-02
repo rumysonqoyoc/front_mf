@@ -1,0 +1,17 @@
+table.dataTable thead th {
+  background-color: #083463;
+  color: rgb(249, 251, 251);
+}
+
+table.dataTable tbody tr:nth-child(even) {
+  background-color: #c1e4e4 !important;
+}
+
+table.dataTable tbody tr:nth-child(odd) {
+  background-color: #fbfdfd !important;
+}
+
+table.dataTable tbody tr:hover {
+  background-color: #065aad !important;
+  color: #f4f6f8 !important;
+}
