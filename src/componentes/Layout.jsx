@@ -29,6 +29,7 @@ export const Layout = () => {
                     <li> <NavLink to='/por_producto'>Por producto</NavLink> </li>
                     <li> <NavLink to='/por_programa_micro'>Programa/Micro Red</NavLink> </li>
                     <li> <NavLink to='/por_producto_micro'>Producto/Micro Red</NavLink> </li>
+                    <li> <NavLink to='/por_micro_programa'>Micro Red/Programa</NavLink> </li>
                 </ul>
             </aside>
 
