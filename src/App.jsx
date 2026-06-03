@@ -4,8 +4,8 @@ import { Layout } from './componentes/Layout'
 import { Inicio } from './paginas/Inicio'
 import { Por_programa } from './paginas/Por_programa'
 import { Por_producto } from './paginas/Por_producto'
-import { Por_sub_producto } from './paginas/Por_sub_producto'
 import { Por_programa_micro } from './paginas/Por_programa_micro'
+import { Por_producto_micro } from './paginas/Por_producto_micro'
 
 export const App = () => {
   return (
@@ -15,8 +15,8 @@ export const App = () => {
                 <Route index element={<Inicio/>}/>
                 <Route path='por_programa' element={<Por_programa/>}/>
                 <Route path='por_producto' element={<Por_producto/>}/>
-                <Route path='por_sub_producto' element={<Por_sub_producto/>}/>
                 <Route path='por_programa_micro' element={<Por_programa_micro/>}/>
+                <Route path='por_producto_micro' element={<Por_producto_micro/>}/>
             </Route>
         </Routes>
     </BrowserRouter>

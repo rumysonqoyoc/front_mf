@@ -51,11 +51,11 @@ export const Por_programa = () => {
 
   return (
     <>
-    <div className='row'>
+    <div className='row shadow-lg p-3 bg-light align-middle border border-secondary rounded'>
       <div className='col-2'>
-        <h4> <label htmlFor="cmb_prg">Programas</label></h4>
+        <h4>Programas</h4>
       </div>
-      <div className='col-6'>
+      <div className='col-8'>
       <select name="programas" id="cmb_prg" className='form-select' onChange={codigo_prog}>
         <option value="">Seleccione un programa</option>
         {programas.map((item)=>(
@@ -69,7 +69,7 @@ export const Por_programa = () => {
 
 
 
-    <div className='row'>
+    <div className='row shadow-lg p-3 bg-light align-middle border border-secondary rounded mt-2'>
       <DataTable data={metas} columns={cols} className='display compact table-striped table-hover table-bordered' 
       options={{
           responsive: true,
