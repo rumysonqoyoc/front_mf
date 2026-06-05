@@ -15,7 +15,7 @@ export const Por_programa = () => {
       {title:'ACTIVIDAD', data:'nom_act', width:'25%'},
       {title:'SUB PRODUCTO', data:'nom_sub', width:'25%'},
       {title:'UNIDAD DE MEDIDAD', data:'unidad', width:'15%'},
-      {title:'META', data:'meta', width:'10%'}
+      {title:'META', data:'meta', width:'10%', className:'num_meta'}
     ]
   
     const get_programas=async()=>{
@@ -53,7 +53,7 @@ export const Por_programa = () => {
     <>
     <div className='row shadow-lg p-3 bg-light align-middle border border-secondary rounded'>
       <div className='col-2'>
-        <h4>Programas</h4>
+        <label htmlFor="cmb_prg" className='etiq'>Programas</label>
       </div>
       <div className='col-8'>
       <select name="programas" id="cmb_prg" className='form-select' onChange={codigo_prog}>

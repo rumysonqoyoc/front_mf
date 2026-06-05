@@ -23,14 +23,16 @@ export const Layout = () => {
                 <div className='opt'>
                     <h3>Opciones</h3>
                 </div>
-                <ul className='sidebar-nav'>
-                    <li> <NavLink to='/'>Inicio</NavLink> </li>
-                    <li> <NavLink to='/por_programa'>Por programa</NavLink> </li>
-                    <li> <NavLink to='/por_producto'>Por producto</NavLink> </li>
-                    <li> <NavLink to='/por_programa_micro'>Programa/Micro Red</NavLink> </li>
-                    <li> <NavLink to='/por_producto_micro'>Producto/Micro Red</NavLink> </li>
-                    <li> <NavLink to='/por_micro_programa'>Micro Red/Programa</NavLink> </li>
-                </ul>
+                <nav className='menu'>
+                    <NavLink to='/' className={({isActive})=>(isActive ? 'nav-link active':'nav-link')}>Inicio</NavLink>
+                    <NavLink to='/por_programa' className={({isActive})=>(isActive ? 'nav-link active':'nav-link')}>Por programa</NavLink>
+                    <NavLink to='/por_producto' className={({isActive})=>(isActive ? 'nav-link active':'nav-link')}>Por producto</NavLink>
+                    <NavLink to='/por_programa_micro' className={({isActive})=>(isActive ? 'nav-link active':'nav-link')}>Programa/Micro Red</NavLink>
+                    <NavLink to='/por_producto_micro' className={({isActive})=>(isActive ? 'nav-link active':'nav-link')}>Producto/Micro Red</NavLink>
+                    <NavLink to='/por_micro_programa' className={({isActive})=>(isActive ? 'nav-link active':'nav-link')}>Micro Red/Programa</NavLink>
+                    <NavLink to='/por_micro_eess' className={({isActive})=>(isActive ? 'nav-link active':'nav-link')}>Micro Red/eess</NavLink>
+                    <NavLink to='/producto_sub_producto_micro' className={({isActive})=>(isActive ? 'nav-link active':'nav-link')}>Producto/Sub prod./Micro Red</NavLink>
+                </nav>
             </aside>
 
             <main className="contenido-dinamico">

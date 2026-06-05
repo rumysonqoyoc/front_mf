@@ -18,7 +18,7 @@ export const Por_producto = () => {
       {title:'ACTIVIDAD', data:'nom_act', width:'30%'},
       {title:'SUB PRODUCTO', data:'nom_sub', width:'35%'},
       {title:'UNIDAD DE MEDIDAD', data:'unidad', width:'20%'},
-      {title:'META', data:'meta', width:'15%'}
+      {title:'META', data:'meta', width:'15%', className:'num_meta'}
     ]
   
     const get_programas=async()=>{
@@ -73,7 +73,7 @@ export const Por_producto = () => {
     <>
     <div className='row shadow-lg p-3 bg-light align-middle border border-secondary rounded'>
       <div className='col-1'>
-        <h4> Programas</h4>
+        <label htmlFor="cmb_prg" className='etiq'>Programas</label>
       </div>
       <div className='col-5'>
       <select name="programas" id="cmb_prg" className='form-select' onChange={codigo_prog}>
@@ -88,7 +88,7 @@ export const Por_producto = () => {
 
 
     <div className='col-1'>
-        <h4>Productos</h4>
+        <label htmlFor="cmb_prd" className='etiq'>Productos</label> 
       </div>
       <div className='col-5'>
       <select name="productos" id="cmb_prd" className='form-select' onChange={codigo_prod}>

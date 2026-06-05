@@ -25,6 +25,35 @@
   margin-left: 20px;
 }
 
+
+.menu{
+    display: flex;
+    gap: 5px;
+    flex-direction: column;
+    padding: 5px 0;
+}
+
+.nav-link{
+    color: #e5eee9;
+    text-decoration: none;
+    padding: 5px 20px;
+    transition: 0.2s;
+}
+
+.nav-link:hover{
+    background-color: #101080;
+    color: #81faf8;
+    border: 2px solid #50f4f7;
+    border-radius: 10px;
+}
+
+.nav-link.active{
+    background-color: #101080;
+    color: #81faf8;
+    border: 2px solid #50f4f7;
+    border-radius: 10px;
+}
+
 .contenido-principal {
   display: flex;
   margin-top: 60px; /* Altura de la barra horizontal */
@@ -49,31 +78,6 @@
   left: 0; /* Desplegado */
 }
 
-.sidebar-nav {
-  margin-top: 20px;
-  list-style: none;
-  padding: 1px;
-}
-
-.sidebar-nav li a {
-  display: block;
-  padding: 5px 10px;
-  color: #cbeff5;
-  text-decoration: none;
-  border-bottom: 1px solid #6ef6eb;
-  border-top: 1px solid #6ef6eb;
-}
-
-.sidebar-nav li a:hover {
-  display: block;
-  padding: 5px 10px;
-  color: #f7f2f2;
-  background-color: #063794;
-  text-decoration: none;
-  /*border-radius: 10px;
-  border: 3px solid #76c3e1;*/
-}
-
 .contenido-dinamico {
   flex: 1;
   padding: 20px;
@@ -91,10 +95,10 @@
 }
 
 .opt{
-  align-content: center;
   text-align: center;
-  background-color: #380261;
-  padding: 5px 0;  
+  background-color: #550790;
+  color: #f6f7f8;
+  padding: 10px 0;
 }
 
 /* Ajuste si el sidebar empuja el contenido al desplegarse */

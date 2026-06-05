@@ -16,7 +16,7 @@ export const Inicio = () => {
     {title:'ACTIVIDAD', data:'nom_act', width:'20%'},
     {title:'SUB PRODUCTO', data:'nom_sub', width:'20%'},
     {title:'UNIDAD DE MEDIDAD', data:'unidad', width:'15%'},
-    {title:'META', data:'meta', width:'10%'}
+    {title:'META FISICA', data:'meta', width:'10%', className:'num_meta'}
   ]
 
   const get_inicio=async()=>{
@@ -35,6 +35,7 @@ export const Inicio = () => {
 
   return (
     <>
+    <div className='border border-secondary shadow-lg p-3 rounded'>
       <DataTable data={metas} columns={cols} className='display compact table-striped table-hover table-bordered' 
       options={{
           responsive: true,
@@ -54,6 +55,8 @@ export const Inicio = () => {
           }
         }}
       />
+      </div>
     </>
+
   )
 }

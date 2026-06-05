@@ -16,7 +16,7 @@ export const Por_programa_micro = () => {
       {title:'SUB PRODUCTO', data:'nom_sub', width:'20%'},
       {title:'MICRO RED', data:'nom_micro', width:'10%'},
       {title:'UNIDAD DE MEDIDAD', data:'unidad', width:'10%'},
-      {title:'META', data:'meta', width:'10%'}
+      {title:'META', data:'meta', width:'10%', className:'num_meta'}
     ]
   
     const get_programas=async()=>{
@@ -53,7 +53,7 @@ export const Por_programa_micro = () => {
     <>
     <div className='row shadow-md p-3 bg-light align-middle border border-secondary rounded'>
       <div className='col-2'>
-        <h4> Programas</h4>
+        <label htmlFor="cmb_prg" className='etiq'>Programas</label>
       </div>
       <div className='col-6'>
       <select name="programas" id="cmb_prg" className='form-select' onChange={codigo_prog}>
