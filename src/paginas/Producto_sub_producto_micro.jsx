@@ -1,7 +1,26 @@
 import React, { useEffect, useState } from 'react'
-import DataTable from 'datatables.net-react';
-import DT from 'datatables.net-dt';
-import 'datatables.net-dt/css/dataTables.dataTables.css';
+import { Bar } from 'react-chartjs-2';
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  Title,
+  Tooltip,
+  Legend,
+} from 'chart.js';
+
+// Registrar los componentes necesarios de Chart.js
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  Title,
+  Tooltip,
+  Legend
+);
+
+
 import axios from 'axios'
 import './Paginas.css'
 
@@ -14,6 +33,41 @@ export const Producto_sub_producto_micro = () => {
   const [cod_prg, setCod_prg]=useState([])
   const [cod_prd, setCod_prd]=useState([])
   const [cod_sub, setCod_sub]=useState([])
+
+
+const data = {
+    labels: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo'],
+    datasets: [
+      {
+        label: 'Ventas mensuales ($)',
+        data: [650, 590, 800, 810, 560],
+        backgroundColor: 'rgba(54, 162, 235, 0.6)',
+        borderColor: 'rgba(54, 162, 235, 1)',
+        borderWidth: 1,
+      },
+    ],
+  };
+
+
+ const options = {
+    indexAxis: 'y', // ESTO ES LA CLAVE: Gira el gráfico a horizontal
+    responsive: true,
+    plugins: {
+      legend: {
+        position: 'top',
+      },
+      title: {
+        display: true,
+        text: 'Reporte de Ventas 2026',
+      },
+    },
+    scales: {
+      x: {
+        beginAtZero: true,
+      },
+    },
+  };
+
   
     const get_programas=async()=>{
       try{
@@ -111,16 +165,17 @@ export const Producto_sub_producto_micro = () => {
                 ))}
             </select>
             </div>
+            <Bar data={data} options={options} />;
             </div>
         </div>
 
 
         <div className='col-6'>
             <div className='row'>
-            <div className='col-4'>
+            <div className='col-3'>
             <label htmlFor="cmb_sub" className='etiq'>Sub Productos</label>
             </div>
-            <div className='col-8'>
+            <div className='col-9'>
             <select name="sub_pro" id="cmb_sub" className='form-select' onChange={codigo_subpro}>
                 <option value="">Seleccione un sub producto</option>
                 {sub_productos.map((item)=>(
@@ -133,6 +188,7 @@ export const Producto_sub_producto_micro = () => {
         </div>
         </div>
 
+        
 
     </div>
 
