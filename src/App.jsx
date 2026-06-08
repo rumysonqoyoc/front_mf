@@ -9,6 +9,7 @@ import { Por_producto_micro } from './paginas/Por_producto_micro'
 import { Por_micro_programa } from './paginas/Por_micro_programa'
 import { Micro_eess } from './paginas/Micro_eess'
 import { Producto_sub_producto_micro } from './paginas/Producto_sub_producto_micro'
+import { Producto_sub_producto_eess } from './paginas/Producto_sub_producto_eess'
 
 export const App = () => {
   return (
@@ -23,6 +24,7 @@ export const App = () => {
                 <Route path='por_micro_programa' element={<Por_micro_programa/>}/>
                 <Route path='por_micro_eess' element={<Micro_eess/>}/>
                 <Route path='producto_sub_producto_micro' element={<Producto_sub_producto_micro/>}/>
+                <Route path='producto_sub_producto_eess' element={<Producto_sub_producto_eess/>}/>
             </Route>
         </Routes>
     </BrowserRouter>

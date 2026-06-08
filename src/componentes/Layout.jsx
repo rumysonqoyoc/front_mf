@@ -32,6 +32,7 @@ export const Layout = () => {
                     <NavLink to='/por_micro_programa' className={({isActive})=>(isActive ? 'nav-link active':'nav-link')}>Micro Red/Programa</NavLink>
                     <NavLink to='/por_micro_eess' className={({isActive})=>(isActive ? 'nav-link active':'nav-link')}>Micro Red/eess</NavLink>
                     <NavLink to='/producto_sub_producto_micro' className={({isActive})=>(isActive ? 'nav-link active':'nav-link')}>Producto/Sub prod./Micro Red</NavLink>
+                    <NavLink to='/producto_sub_producto_eess' className={({isActive})=>(isActive ? 'nav-link active':'nav-link')}>Producto/Sub prod./EESS</NavLink>
                 </nav>
             </aside>
 

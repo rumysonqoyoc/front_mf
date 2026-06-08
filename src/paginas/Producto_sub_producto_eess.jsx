@@ -28,8 +28,10 @@ import axios from 'axios'
 import './Paginas.css'
 
 const url='http://192.168.1.2:3001/api/'
-export const Producto_sub_producto_micro = () => {
+export const Producto_sub_producto_eess = () => {
   const [programas, setProgramas]=useState([])
+  const [micro, setMicro]=useState([])
+  const [cod_mic, setCod_mic]=useState([])
   const [productos, setProductos]=useState([])
   const [sub_productos, setSub_productos]=useState([])
   const [cod_prg, setCod_prg]=useState([])
@@ -71,6 +73,15 @@ export const Producto_sub_producto_micro = () => {
       }
     }
 
+    const get_micro_red=async()=>{
+      try{
+        const res=await axios.get(url+'micro_redes')
+        setMicro(res.data)
+      }catch(error){
+        console.error('error al obtener datos')
+      }
+    }
+
     const get_productos=async()=>{
       try{
         const res=await axios.get(url+'productos'+'/'+cod_prg)
@@ -89,32 +100,36 @@ export const Producto_sub_producto_micro = () => {
       }
     }
 
-    const get_graf_producto_micro=async()=>{
+    const get_graf_producto_eess=async()=>{
       try{
-        const res=await axios.get(url+'graf_producto_micro'+'/'+cod_prg+'/'+cod_prd)
-        const micro1=res.data.map(mic=>mic.nom_micro)
+        const res=await axios.get(url+'graf_producto_eess'+'/'+cod_prg+'/'+cod_prd+'/'+cod_mic)
+        const est1=res.data.map(est=>est.nom_eess)
         const met1=res.data.map(mt=>parseInt(mt.meta))
-        setData_prd({labels:micro1,datasets:[{label:'Metas', data:met1, backgroundColor: 'rgba(69, 229, 246, 0.5)', borderColor: 'rgba(8, 65, 221, 0.5)', borderWidth: 5, borderRadius: 8}]})
-
+        setData_prd({labels:est1,datasets:[{label:'Metas', data:met1, backgroundColor: 'rgba(69, 229, 246, 0.5)', borderColor: 'rgba(8, 65, 221, 0.5)', borderWidth: 5, borderRadius: 8}]})
       }catch(error){
         console.error('error al obtener datos')
       }
     }
 
-    const get_graf_sub_producto_micro=async()=>{
+    const get_graf_sub_producto_eess=async()=>{
       try{
-        const res=await axios.get(url+'graf_sub_producto_micro'+'/'+cod_prg+'/'+cod_prd+'/'+cod_sub)
-        const micro2=res.data.map(mic=>mic.nom_micro)
+        const res=await axios.get(url+'graf_sub_producto_eess'+'/'+cod_prg+'/'+cod_prd+'/'+cod_sub+'/'+cod_mic)
+        const est2=res.data.map(est=>est.nom_eess)
         const met2=res.data.map(mt=>parseInt(mt.meta))
-        setData_sub({labels:micro2,datasets:[{label:'Metas', data:met2, backgroundColor: 'rgba(195, 242, 183, 0.5)', borderColor: 'rgba(9, 131, 43, 0.5)', borderWidth: 5, borderRadius: 8}]})
-
+        setData_sub({labels:est2,datasets:[{label:'Metas', data:met2, backgroundColor: 'rgba(195, 242, 183, 0.5)', borderColor: 'rgba(9, 131, 43, 0.5)', borderWidth: 5, borderRadius: 8}]})
       }catch(error){
         console.error('error al obtener datos')
       }
     }
+
+    
 
     const codigo_prog=(event)=>{
       setCod_prg(event.target.value)
+    }
+
+    const codigo_micro=(event)=>{
+      setCod_mic(event.target.value)
     }
 
     const codigo_prod=(event)=>{
@@ -127,6 +142,7 @@ export const Producto_sub_producto_micro = () => {
 
   useEffect(()=>{
     get_programas()
+    get_micro_red()
   },[])
 
   useEffect(()=>{
@@ -139,20 +155,20 @@ export const Producto_sub_producto_micro = () => {
 
 
   useEffect(()=>{
-    get_graf_producto_micro()
-  },[cod_prg, cod_prd])
+    get_graf_producto_eess()
+  },[cod_prg, cod_prd, cod_mic])
 
   useEffect(()=>{
-    get_graf_sub_producto_micro()
-  },[cod_prg, cod_prd, cod_sub])
+    get_graf_sub_producto_eess()
+  },[cod_prg, cod_prd, cod_sub, cod_mic])
 
   return (
     <>
     <div className='row shadow-md p-2 bg-light align-middle border border-secondary rounded'>
-      <div className='col-2'>
+        <div className='col-1'>
         <label htmlFor="cmb_prg" className='etiq'>Programas</label>
       </div>
-      <div className='col-6'>
+      <div className='col-5'>
       <select name="programas" id="cmb_prg" className='form-select' onChange={codigo_prog}>
         <option value="">Seleccione un programa</option>
         {programas.map((item)=>(
@@ -162,6 +178,22 @@ export const Producto_sub_producto_micro = () => {
         ))}
       </select>
     </div>
+
+
+    <div className='col-2'>
+        <label htmlFor="cmb_mic" className='etiq'>Micro Red</label>
+      </div>
+      <div className='col-4'>
+      <select name="productos" id="cmb_mic" className='form-select' onChange={codigo_micro}>
+        <option value="">Seleccione una Micro Red</option>
+        {micro.map((item)=>(
+          <option key={item.cod_micro} value={item.cod_micro}>
+            {item.nom_micro}
+          </option>
+        ))}
+      </select>
+    </div>
+    
     </div>
 
 
@@ -171,10 +203,10 @@ export const Producto_sub_producto_micro = () => {
         <div className='col-6'>
             <div className='row'>
             <div className='col-2'>
-            <label htmlFor="cmb_prg" className='etiq'>Productos</label>
+            <label htmlFor="cmb_prd" className='etiq'>Productos</label>
             </div>
             <div className='col-10'>
-            <select name="programas" id="cmb_prg" className='form-select' onChange={codigo_prod}>
+            <select name="productos" id="cmb_prd" className='form-select' onChange={codigo_prod}>
                 <option value="">Seleccione un producto</option>
                 {productos.map((item)=>(
                 <option key={item.cod_prd} value={item.cod_prd}>
@@ -183,11 +215,12 @@ export const Producto_sub_producto_micro = () => {
                 ))}
             </select>
             </div>
+
             </div>
 
             <div className='row'>
               <div className='col-12 shadow-lg grf-prod'>
-                <Bar key={JSON.stringify(data_prd)} data={data_prd} options={options} />;
+                <Bar key={JSON.stringify(data_prd)} data={data_prd} options={options} />
               </div>
             </div>
         </div>
@@ -217,11 +250,7 @@ export const Producto_sub_producto_micro = () => {
         </div>
 
         </div>
-
-        
-
     </div>
-
     </>
   )
 }

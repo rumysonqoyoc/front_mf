@@ -28,3 +28,8 @@ table.dataTable tbody tr:hover {
   color: #060366;
   align-content: center;
 }
+
+.grf-prod{
+  width: 100%;
+  height: 500px;
+}
