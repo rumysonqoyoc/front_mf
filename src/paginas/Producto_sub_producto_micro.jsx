@@ -27,7 +27,7 @@ ChartJS.register(
 import axios from 'axios'
 import './Paginas.css'
 
-const url='http://192.168.1.2:3001/api/'
+const url='http://api_mf.redcusconorte.gob.pe/api/'
 export const Producto_sub_producto_micro = () => {
   const [programas, setProgramas]=useState([])
   const [productos, setProductos]=useState([])

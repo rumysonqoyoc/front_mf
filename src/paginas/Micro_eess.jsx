@@ -5,7 +5,7 @@ import 'datatables.net-dt/css/dataTables.dataTables.css';
 import axios from 'axios'
 import './Paginas.css'
 
-const url='http://192.168.1.2:3001/api/'
+const url='http://api_mf.redcusconorte.gob.pe/api/'
 
 export const Micro_eess = () => {
   const [micro_red, setMicro_red]=useState([])
