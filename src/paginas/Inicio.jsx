@@ -7,7 +7,7 @@ import './Paginas.css'
 
 DataTable.use(DT);
 
-const url='localhost:3001/api/inicio'
+const url='http://api_mf.redcusconorte.gob.pe/api/inicio'
 export const Inicio = () => {
   const [metas, setMetas]=useState([])
   const cols=[
