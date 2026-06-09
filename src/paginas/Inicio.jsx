@@ -7,7 +7,7 @@ import './Paginas.css'
 
 DataTable.use(DT);
 
-const url='http://192.168.1.2:3001/api/inicio'
+const url='localhost:3001/api/inicio'
 export const Inicio = () => {
   const [metas, setMetas]=useState([])
   const cols=[
