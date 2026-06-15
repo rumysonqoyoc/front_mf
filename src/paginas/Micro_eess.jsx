@@ -3,6 +3,7 @@ import DataTable from 'datatables.net-react';
 import DT from 'datatables.net-dt';
 import 'datatables.net-dt/css/dataTables.dataTables.css';
 import axios from 'axios'
+import * as xlsx from 'xlsx';
 import './Paginas.css'
 
 const url='http://api_mf.redcusconorte.gob.pe/api/'
@@ -13,13 +14,14 @@ export const Micro_eess = () => {
   const [metas, setMetas]=useState([])
   const [cod_mic, setCod_mic]=useState([])
   const [cod_est, setCod_est]=useState([])
+  const [nom_est, setNom_est]=useState('')
 
     const cols=[
-      {title:'PROGRAMA', data:'nom_act', width:'20%'},  
-      {title:'PRODUCTO', data:'nom_act', width:'20%'},  
-      {title:'ACTIVIDAD', data:'nom_act', width:'20%'},
-      {title:'SUB PRODUCTO', data:'nom_sub', width:'20%'},
-      {title:'UNIDAD DE MEDIDAD', data:'unidad', width:'10%'},
+      {title:'PROGRAMA', data:'Programa', width:'20%'},  
+      {title:'PRODUCTO', data:'Producto', width:'20%'},  
+      {title:'ACTIVIDAD', data:'Actividad', width:'20%'},
+      {title:'SUB PRODUCTO', data:'Sub_Producto', width:'20%'},
+      {title:'UNIDAD DE MEDIDAD', data:'Unidad_Medida', width:'10%'},
       {title:'META', data:'meta', width:'10%', className:'num_meta'}
     ]
   
@@ -47,12 +49,32 @@ export const Micro_eess = () => {
 
     const codigo_est=(event)=>{
       setCod_est(event.target.value)
+      const nom_eess=event.target.options[event.target.selectedIndex].text
+      setNom_est(nom_eess)
+      console.log('nombre eess:',nom_eess)
     }
 
     const get_por_micro_eess=async()=>{
       try{
         const res=await axios.get(url+'por_micro_eess/'+cod_mic+'/'+cod_est)
         setMetas(res.data)
+      }catch(error){
+        console.error('error al obtener datos')
+      }
+    }
+
+    const expo_excel=async()=>{
+      try{
+        //const res=await axios.get(url+'por_micro_eess/'+cod_mic+'/'+cod_est)
+        //setMetas(res.data)
+        const hojaDeTrabajo = xlsx.utils.json_to_sheet(metas);
+        const libroDeTrabajo = xlsx.utils.book_new();
+        // 3. Añadir la hoja de trabajo al libro de trabajo
+        xlsx.utils.book_append_sheet(libroDeTrabajo, hojaDeTrabajo, "Metas Fisicas");
+        
+        // 4. Generar y descargar el archivo Excel
+        xlsx.writeFile(libroDeTrabajo, "Reporte_Metas_Fisicas_"+nom_est+".xlsx");
+
       }catch(error){
         console.error('error al obtener datos')
       }
@@ -77,7 +99,7 @@ export const Micro_eess = () => {
     <div className='col-2'>
         <label htmlFor="cmb_prd" className='etiq'>Micro Red</label>
       </div>
-      <div className='col-4'>
+      <div className='col-3'>
       <select name="productos" id="cmb_prd" className='form-select' onChange={codigo_micro}>
         <option value="">Seleccione una Micro Red</option>
         {micro_red.map((item)=>(
@@ -91,7 +113,7 @@ export const Micro_eess = () => {
     <div className='col-2'>
         <label htmlFor="cmb_est" className='etiq'>Establecimientos</label>
       </div>
-      <div className='col-4'>
+      <div className='col-3'>
       <select name="eess" id="cmb_est" className='form-select' onChange={codigo_est}>
         <option value="">Seleccione un Establecimiento</option>
         {eess.map((item)=>(
@@ -100,6 +122,10 @@ export const Micro_eess = () => {
           </option>
         ))}
       </select>
+    </div>
+
+    <div className='col-2'>
+      <button className='btn btn-lg btn-success' onClick={expo_excel}>Exportar a Excel</button>
     </div>
 
     </div>

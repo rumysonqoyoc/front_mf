@@ -15,7 +15,7 @@ export const Por_micro_programa = () => {
   const [cod_mic, setCod_mic]=useState([])
 
     const cols=[
-      {title:'PRODUCTO', data:'nom_act', width:'25%'},  
+      {title:'PRODUCTO', data:'nom_prd', width:'25%'},  
       {title:'ACTIVIDAD', data:'nom_act', width:'25%'},
       {title:'SUB PRODUCTO', data:'nom_sub', width:'20%'},
       {title:'EESS', data:'nom_eess', width:'10%'},
@@ -75,8 +75,6 @@ export const Por_micro_programa = () => {
     <>
     <div className='row shadow-lg p-3 bg-light align-middle border border-secondary rounded'>
       
-
-
     <div className='col-2'>
         <label htmlFor="cmb_prd" className='etiq'>Micro Red</label>
       </div>
